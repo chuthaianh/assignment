@@ -4,9 +4,13 @@ struct  Player{
     char name [15];
     int baseHP;
     int wp;
-    float realHP;
+    int realHP;
 };
 int main(){
+    //Probability of victory
+
+    float probability; 
+
     //TASK 1 & 2
 
     //player
@@ -20,8 +24,7 @@ int main(){
         scanf("%d",&players[i].wp);
     }
     for ( int i = 0; i <=1; i++ ){
-        if (players[i].wp == 1 )
-        {
+        if (players[i].wp == 1 ){
                 players[i].realHP = players[i].baseHP;
             }else if (players[i].wp == 0){
                 players[i].realHP = (int)(players[i].baseHP/10);
@@ -41,7 +44,9 @@ int main(){
                 }
             }
     }
-    //TASK 4
+
+    // TASK 4
+
     if (players[0].wp == 2){
         if(players[0].realHP < players[1].realHP){
             probability = (float)0.50;
@@ -57,9 +62,8 @@ int main(){
         }
     }
     // Probability of Cavalier against Saxon
-    float probability; 
+    
     probability=(players[0].realHP-players[1].realHP+999)/(float)2000;
     printf("%.2f",probability);
-
     return 0;
 }
