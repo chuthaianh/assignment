@@ -41,6 +41,21 @@ int main(){
                 }
             }
     }
+    //TASK 4
+    if (players[0].wp == 2){
+        if(players[0].realHP < players[1].realHP){
+            probability = (float)0.50;
+        }else {
+            probability=(players[0].realHP-players[1].realHP+999)/(float)2000;
+        }
+    }
+    if (players[1].wp == 2){
+        if(players[1].realHP < players[0].realHP){
+            probability = (float)0.50;
+        }else {
+            probability=(players[0].realHP-players[1].realHP+999)/(float)2000;
+        }
+    }
     // Probability of Cavalier against Saxon
     float probability; 
     probability=(players[0].realHP-players[1].realHP+999)/(float)2000;
