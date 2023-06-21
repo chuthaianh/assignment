@@ -16,8 +16,8 @@ int main(){
     strcpy(player2.name,"Saxon");
     struct Player players[] = {player1, player2};
     for ( int i = 0; i <=1; i++ ){
-        scanf("%d\n",&players[i].baseHP);
-        scanf("%d\n",&players[i].wp);
+        scanf("%d",&players[i].baseHP);
+        scanf("%d",&players[i].wp);
     }
     for ( int i = 0; i <=1; i++ ){
         if (players[i].wp == 1 )
