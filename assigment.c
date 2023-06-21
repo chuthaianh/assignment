@@ -16,9 +16,53 @@ void display(double out)
 	}
 }
 
+char checkPrimeNumber(int hp)
+{
+    if (hp==0 || hp ==1) return 0;
+    if (hp==2) return 1;
+    for (int i=3;i*i <= hp; i++)
+    {
+        if (hp % i == 0) return 0;
+    }
+    return 1;
+}
+int fibonacci(unsigned int n) {
+    if (n == 0) return 0;
+    if (n == 1) return 1;
+    
+    int a = 0;
+    int b = 1;
+    int c;
+    
+    for (unsigned int i = 2; i <= n; ++i) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+
+    return b;
+}
+
+int findNearestFibonacci(int x) {
+    int a = 0;
+    int b = 1;
+    int c;
+    
+    while (b <= x) {
+        c = a + b;
+        a = b;
+        b = c;
+    }
+    
+    if (abs(a - x) <= abs(b - x)) {
+        return a;
+    } else {
+        return b;
+    }
+}
+
 int main(void)
 {
-	//read data from input to corresponding variables
 	int baseHP1, baseHP2, wp1, wp2, ground;
     int i = 2;
     int SNT1 = 1;
@@ -65,69 +109,59 @@ int main(void)
 		realHP2*=1.10;
         if (realHP2>999) realHP2 = 999;
     }
-    
-    if (wp1 == 2 || wp2 == 2)
+
+    if (wp1==2 && realHP1 < realHP2)
+        {
+            out = 0.5;
+        }
+        
+    if (wp2==2 && realHP2 < realHP1 && wp1!=3) 
+        {
+            out = 0.5;
+        }
+
+    if (wp1 == 3)
     {
-        if (wp1==2)
-        {
-            realHP1=baseHP1;
-        }
-        else if (wp2==2) 
-        {
-
-        }
-        else if (wp1 == 2 && wp2 == 2)
-        {
-            
-        }
+        realHP1 *= 2;
+        if (realHP1>999) realHP1 = 999;
     }
-    
-    while (baseHP1<=1)
-	for (i=2; i<=baseHP1/2 ; i++)
-	  if (baseHP1%i == 0)
-	  {
-      SNT1 = 0;
-      break;
-	  }
-	while (baseHP2<=1)
-	  for (i=2; i<=baseHP2/2; i++)
-	  if (baseHP2%i == 0)
-	  {
-      SNT2 = 0;
-      break;
-	  }
-	//Truong hop dia hinh dac biet
-	if (ground==baseHP1)
-		realHP1*=1.10;
-	if (ground==baseHP2)
-		realHP2*=1.10;
-	//Truong hop su dung vu khi dac biet
-	if (wp1==3)
-	{
-		realHP1*=2;
-		if (wp2==2)
-			wp2=1;//Ao giap cua Saxon mat tac dung
-	}
-	if (realHP1>999)//Neu realHP vuot qua 999 thi lay bang 999
-		realHP1=999;
-	if (realHP2>999)
-		realHP2=999;
-out=(realHP1-realHP2+999)/2000;//Cho de ct tinh xa´c suat
 
-//Truong hop vua Arthur va Cerdic dich than chien dau
-	if (baseHP1==999)
-		out=1;
-	else 
-		if (baseHP2==888)
-			out=0;
-if ((out<0.5 && wp1==2) || (out>0.5 && wp2==2))
-	out=0.5;
+    if (baseHP1 == 999) //vua arthur end game
+    {
+        display(1);
+        return 1;
+    }
 
+    if (baseHP2 == 888) 
+    {
+        display(0.00);
+        return 1;
+    }
 
+    if (checkPrimeNumber(baseHP1) == '1' && checkPrimeNumber(baseHP2) != '1')
+    {
+        out = 0.99;
+    }
 
-
-
-
+    if (checkPrimeNumber(baseHP2) == '1' && checkPrimeNumber(baseHP1) != '1')
+    {
+        out = 0.01;
+    }
+    if (checkPrimeNumber(baseHP1) == '1' && checkPrimeNumber(baseHP2) == '1' && baseHP1==baseHP2)
+    {
+        out = 0.5;
+    }
+    int n;
+    if (ground == 666)
+    {
+        realHP1 = findNearestFibonacci(baseHP1);
+        realHP2 = findNearestFibonacci(baseHP2);
+    }
+    if (ground == 777)
+    {
+        scanf("%d", &n);
+        
+    }
 	display(out);
 	return 0;
 }

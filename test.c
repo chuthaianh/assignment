@@ -4,7 +4,7 @@ struct  Player{
     char name [15];
     int baseHP;
     int wp;
-    int realHP;
+    float realHP;
 };
 int main(){
     //TASK 1 & 2
@@ -20,7 +20,8 @@ int main(){
         scanf("%d\n",&players[i].wp);
     }
     for ( int i = 0; i <=1; i++ ){
-        if (players[i].wp == 1 ){
+        if (players[i].wp == 1 )
+        {
                 players[i].realHP = players[i].baseHP;
             }else if (players[i].wp == 0){
                 players[i].realHP = (int)(players[i].baseHP/10);
