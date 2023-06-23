@@ -152,6 +152,7 @@ int main(void)
         out = 0.5;
     }
     int n;
+    int array[1000];
     if (ground == 666)
     {
         realHP1 = findNearestFibonacci(baseHP1);
@@ -160,7 +161,11 @@ int main(void)
     if (ground == 777)
     {
         scanf("%d", &n);
-        
+        for (int i=0;i<n;i++)
+        {
+            scanf("%d", &n);
+            
+        }
     }
 	display(out);
 	return 0;
