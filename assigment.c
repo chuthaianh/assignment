@@ -64,9 +64,9 @@ int findNearestFibonacci(int x) {
 int main(void)
 {
 	int baseHP1, baseHP2, wp1, wp2, ground;
-    int i = 2;
-    int SNT1 = 1;
-    int SNT2 = 1;
+    //int i = 2;
+   //int SNT1 = 1;
+    //int SNT2 = 1;
     float P, realHP1, realHP2;
 	double out = 0.0;
 	scanf("%d %d %d %d %d",&baseHP1, &wp1, &baseHP2, &wp2, &ground);
@@ -140,19 +140,22 @@ int main(void)
 
     if (checkPrimeNumber(baseHP1) == '1' && checkPrimeNumber(baseHP2) != '1')
     {
-        out = 0.99;
+        display(0.99);
+        return 0;
     }
 
     if (checkPrimeNumber(baseHP2) == '1' && checkPrimeNumber(baseHP1) != '1')
     {
-        out = 0.01;
+        display(0.01);
+        return 0;
     }
     if (checkPrimeNumber(baseHP1) == '1' && checkPrimeNumber(baseHP2) == '1' && baseHP1==baseHP2)
     {
-        out = 0.5;
+        display(0.5);
+        return 0;
     }
     int n;
-    int array[1000];
+   // int array[1000];
     if (ground == 666)
     {
         realHP1 = findNearestFibonacci(baseHP1);
@@ -164,9 +167,9 @@ int main(void)
         for (int i=0;i<n;i++)
         {
             scanf("%d", &n);
-            
         }
     }
+    out = (realHP1-realHP2+999)/2000;
 	display(out);
 	return 0;
 }

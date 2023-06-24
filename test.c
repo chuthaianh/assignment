@@ -2,8 +2,8 @@
 #include<string.h>
 #include<stdbool.h>
 #include<stdlib.h>
+#include<math.h>
 
-int main()
 struct  Player{
     char name [15];
     int baseHP;
@@ -12,14 +12,16 @@ struct  Player{
 };
 //Prime Number
 
-bool PrimeNumber(unsigned int n) {
+bool PrimeNumber(unsigned int n) 
+{
     if (n <= 1) return false;
     for (unsigned int i = 2; i <= sqrt(n); i++) {
         if (n % i == 0) return false;
     }
     return true;
 }
-int main(void){
+int main(void)
+{
     float probability;
     //TASK 1 & 2
     //player
@@ -125,6 +127,7 @@ int main(void){
     }
     //probability
     probability=(players[0].realHP-players[1].realHP+999)/(float)2000;
+
     printf("%.2f", probability);
     
 return 0;
