@@ -1,28 +1,57 @@
 #include<stdio.h>
 #include<string.h>
+#include<stdbool.h>
+#include<stdlib.h>
+
+int main()
 struct  Player{
     char name [15];
     int baseHP;
     int wp;
     int realHP;
 };
-int main(){
-    //Probability of victory
+//Prime Number
 
-    float probability; 
-
+bool PrimeNumber(unsigned int n) {
+    if (n <= 1) return false;
+    for (unsigned int i = 2; i <= sqrt(n); i++) {
+        if (n % i == 0) return false;
+    }
+    return true;
+}
+int main(void){
+    float probability;
     //TASK 1 & 2
-
     //player
     struct Player player1;
     struct Player player2;
     strcpy(player1.name,"Cavalier");
     strcpy(player2.name,"Saxon");
     struct Player players[] = {player1, player2};
-    for ( int i = 0; i <=1; i++ ){
+     for ( int i = 0; i <=1; i++ ){
         scanf("%d",&players[i].baseHP);
         scanf("%d",&players[i].wp);
     }
+    //ground
+    int ground;
+    scanf("%d",&ground);
+    if (players[0].baseHP < 99 || players[0].baseHP > 999){
+		return 1;
+    }
+    if (players[0].wp < 0 || players[0].wp > 3){
+		return 1;
+    }
+    if (players[1].baseHP < 1 || players[1].baseHP > 888){
+		return 1;
+    }
+    if (players[1].wp < 0 || players[1].wp > 3){
+		return 1;
+    }
+    if (ground < 1 || ground > 999){
+		return 1;
+    }
+    //weapon
+    //wp =1 & wp = 0
     for ( int i = 0; i <=1; i++ ){
         if (players[i].wp == 1 ){
                 players[i].realHP = players[i].baseHP;
@@ -30,40 +59,73 @@ int main(){
                 players[i].realHP = (int)(players[i].baseHP/10);
             }
     }
-    // TASK 3
-
-    //ground
-    int ground;
-    scanf("%d",&ground);
+    //wp = 2
+    if (players[0].baseHP != 999){
+        if (players[0].wp == 2){
+            players[0].realHP=players[0].baseHP;
+            if (players[0].realHP < players[1].realHP){
+            printf("0.50");
+            return 0;
+            }
+        }
+        if (players[1].wp == 2 && players[0].wp != 3){
+            players[1].realHP=players[1].baseHP;
+            if (players[1].realHP < players[0].realHP){
+            printf("0.50");
+            return 0;
+            }
+        }
+    }
+    //wp = 3
+    if ( players[0].wp == 3){
+        players[0].realHP = players[0].baseHP*2;
+        if (players[0].realHP > 999){
+            players[0].realHP = 999;
+        }
+    }
+    if (players[1].wp == 3){
+        players[1].realHP = players[1].baseHP;
+    }
+    //players[0].baseHP = 999 (Arthur)
+    if (players[0].baseHP == 999){
+        printf("1");
+        return 0;
+    }
+    //players[1].baseHP = 888 (Cerdic)
+    if (players[1].baseHP == 888){
+        if (players[0].baseHP == 999){
+            printf("1");
+            return 0;
+        }else{
+            printf("0.00");
+            return 0;
+        }
+    }
+    // baseHP = prime number
+    if (PrimeNumber(players[0].baseHP)== true && PrimeNumber(players[1].baseHP)== false){
+        printf("0.99");
+        return 0;
+    }
+    if (PrimeNumber(players[0].baseHP)== false && PrimeNumber(players[1].baseHP)== true){
+        printf("0.01");
+        return 0;
+    }
+    if (PrimeNumber(players[0].baseHP)== true && PrimeNumber(players[1].baseHP)== true && players[0].baseHP == players[1].baseHP){
+        printf("0.50"); 
+        return 0;
+    }
+    //ground 
     for ( int i = 0; i <=1; i++ ){
-        
-            if (ground == players[i].baseHP ){
-                players[i].realHP = players[i].realHP*1.1;
+        if (ground == players[i].baseHP ){
+            players[i].realHP = players[i].realHP*1.1;
                 if (players[i].realHP > 999) {
                     players[i].realHP = 999;
                 }
-            }
-    }
-
-    // TASK 4
-
-    if (players[0].wp == 2){
-        if(players[0].realHP < players[1].realHP){
-            probability = (float)0.50;
-        }else {
-            probability=(players[0].realHP-players[1].realHP+999)/(float)2000;
         }
     }
-    if (players[1].wp == 2){
-        if(players[1].realHP < players[0].realHP){
-            probability = (float)0.50;
-        }else {
-            probability=(players[0].realHP-players[1].realHP+999)/(float)2000;
-        }
-    }
-    // Probability of Cavalier against Saxon
-    
+    //probability
     probability=(players[0].realHP-players[1].realHP+999)/(float)2000;
-    printf("%.2f",probability);
-    return 0;
+    printf("%.2f", probability);
+    
+return 0;
 }
