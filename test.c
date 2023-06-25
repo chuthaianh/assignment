@@ -191,6 +191,7 @@ int main(void){
     if (ground == 777){
         int n;
         scanf("%d", &n);
+<<<<<<< HEAD
         int godWeapon[100];
         int max=players[1].baseHP;
         for (int i = 0; i < n; i++){
@@ -207,6 +208,22 @@ int main(void){
             }
         players[1].realHP=max;
     }
+=======
+            int godWeapon[100];
+            int max =0;
+            for (int i = 0; i < n; i++){
+                scanf("%d",&godWeapon[i]);
+            }
+            for (int i = 0; i < n; i++){
+                if (PerfectNumber(players[1].baseHP + godWeapon[i])== true){
+                    if(players[1].baseHP + godWeapon[i] > max){
+                    max = players[1].baseHP+godWeapon[i];
+                    }
+                }
+            }
+            players[1].realHP=max;
+        }
+>>>>>>> e95e6b2c9570b3c64e185ada70759723631488df
     //ground = 999
     if ( ground == 999){
         char s[20];
