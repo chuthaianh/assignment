@@ -192,11 +192,11 @@ int main(void){
         int n;
         scanf("%d", &n);
         if (n>1){
-            char godWeapon[1000];
-            char realhp[1000];
+            int godWeapon[100];
+            int realhp[100];
             int max = realhp[0];
             for (int i = 0; i < n; i++){
-                godWeapon[i] = n+1+i;
+                scanf("%d",&godWeapon[i]);
             }
             for (int i = 0; i < n; i++){
                 for (int j = 0; j < n; j++){
