@@ -191,33 +191,20 @@ int main(void){
     if ( ground == 777){
         int n;
         scanf("%d", &n);
-        if (n>1){
             int godWeapon[100];
-            int realhp[100];
-            int max = realhp[0];
+            int max =0;
             for (int i = 0; i < n; i++){
                 scanf("%d",&godWeapon[i]);
             }
             for (int i = 0; i < n; i++){
-                for (int j = 0; j < n; j++){
-                    if (PerfectNumber(players[1].baseHP + godWeapon[i])== true){
-                        realhp[j] = players[1].baseHP + godWeapon[i];
+                if (PerfectNumber(players[1].baseHP + godWeapon[i])== true){
+                    if(players[1].baseHP + godWeapon[i] > max){
+                    max = players[1].baseHP+godWeapon[i];
                     }
                 }
             }
-                for (int j = 0; j < n; j++){    
-                    if (realhp[j] > max){
-                        max = realhp[j];
-                    }   
-                }
             players[1].realHP=max;
         }
-        if (n==1){
-                if (PerfectNumber(players[1].baseHP + 2)== true){
-                    players[1].realHP = players[1].baseHP + 2;
-                }
-            }
-    }
     //ground = 999
     if ( ground == 999){
         char s[20];
