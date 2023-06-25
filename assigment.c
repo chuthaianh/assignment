@@ -167,6 +167,7 @@ int main(void)
         for (int i=0;i<n;i++)
         {
             scanf("%d", &n);
+            
         }
     }
     out = (realHP1-realHP2+999)/2000;

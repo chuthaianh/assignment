@@ -55,7 +55,7 @@ int findNearestFibonacci(int x) {
 }
 // Perfect number
 bool PerfectNumber(int n){
-int sum=1;
+    int sum=1;
     for (int i = 2; i < n; i++) {
         if (n % i ==0){
             sum +=i;
@@ -188,35 +188,24 @@ int main(void){
     }
     //groud = 777
     
-    if ( ground == 777){
+    if (ground == 777){
         int n;
         scanf("%d", &n);
-        if (n>1){
-            char godWeapon[1000];
-            char realhp[1000];
-            int max = realhp[0];
-            for (int i = 0; i < n; i++){
-                godWeapon[i] = n+1+i;
-            }
-            for (int i = 0; i < n; i++){
-                for (int j = 0; j < n; j++){
-                    if (PerfectNumber(players[1].baseHP + godWeapon[i])== true){
-                        realhp[j] = players[1].baseHP + godWeapon[i];
+        int godWeapon[100];
+        int max=players[1].baseHP;
+        for (int i = 0; i < n; i++){
+            scanf("%d", &godWeapon[i]);
+        }
+        for (int i = 0; i < n; i++){
+            if ((PerfectNumber(players[1].baseHP + godWeapon[i])== true)){
+                    players[1].realHP = players[1].baseHP + godWeapon[i];
+                    if (max < players[1].realHP)
+                    {
+                        max = players[1].realHP;
                     }
                 }
             }
-                for (int j = 0; j < n; j++){    
-                    if (realhp[j] > max){
-                        max = realhp[j];
-                    }   
-                }
-            players[1].realHP=max;
-        }
-        if (n==1){
-                if (PerfectNumber(players[1].baseHP + 2)== true){
-                    players[1].realHP = players[1].baseHP + 2;
-                }
-            }
+        players[1].realHP=max;
     }
     //ground = 999
     if ( ground == 999){
