@@ -191,7 +191,6 @@ int main(void){
     if (ground == 777){
         int n;
         scanf("%d", &n);
-<<<<<<< HEAD
         int godWeapon[100];
         int max=players[1].baseHP;
         for (int i = 0; i < n; i++){
@@ -208,39 +207,21 @@ int main(void){
             }
         players[1].realHP=max;
     }
-=======
-            int godWeapon[100];
-            int max =0;
-            for (int i = 0; i < n; i++){
-                scanf("%d",&godWeapon[i]);
-            }
-            for (int i = 0; i < n; i++){
-                if (PerfectNumber(players[1].baseHP + godWeapon[i])== true){
-                    if(players[1].baseHP + godWeapon[i] > max){
-                    max = players[1].baseHP+godWeapon[i];
-                    }
-                }
-            }
-            players[1].realHP=max;
-        }
->>>>>>> e95e6b2c9570b3c64e185ada70759723631488df
     //ground = 999
     if ( ground == 999){
         char s[20];
         fgets(s,20,stdin);
-        char s1[20]="Arthur";
-        char s2[20]="arthur";
+        char s1[]="Arthur";
+        char s2[]="arthur";
         for ( int j = 0; j < 100; j++ ){
+            int count=0;
             if (j >8){
-                for ( int i = 0; i <=1; i++ ){
-                players[0].realHP-=50;
-                    if ( players[0].realHP < 1){
-                        players[0].realHP = 1;
-                    }
+            players[0].realHP-=50;
+                if ( players[0].realHP < 1){
+                    players[0].realHP = 1;
                 }
             }
             if (s[j] == 's' || s[j] == 'a' || s[j] == 'x' || s[j] == 'o' || s[j] == 'n'){
-                int count = 0;
                 count++;
                 if (count > 3){
                     players[1].realHP +=50;
@@ -249,10 +230,11 @@ int main(void){
                     }
                 }
             }
-            if(strcmp(s,s1)==0 || strcmp(s,s2)==0){
-                players[0].wp = 0;
-            }
         }
+        char* check1=strstr(s,s1);
+        char* check2=strstr(s,s2);
+        if ((check1 != NULL || check2 != NULL) && players[0].wp == 3)
+        players[0].realHP=players[0].baseHP;
     }
     //probability
     probability=(players[0].realHP-players[1].realHP+999)/(float)2000;
