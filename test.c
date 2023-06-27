@@ -207,6 +207,54 @@ int main(void){
             }
         players[1].realHP=max;
     }
+	//ground = 888
+	if (ground==888){
+        int n;
+        int arr[100][100];
+        int max1 = -100;
+        int max2 = -100;
+        int sum;
+        scanf("%d",&n);
+        for (int i = 0; i < n; i++){
+            for (int j = 0; j < n; j++){
+                scanf("%d",&arr[i][j]);
+            }
+        }
+        for (int k=0; k < n; k++){
+            for (int i =0; i < n; i++){
+            int sum1[100]={0};
+                for (int j = 0; j < n; j++){
+                sum1[k] += arr[i][j];
+                    if (sum1[k]>max1){
+                        max1=sum1[k];
+                    }
+                }
+            }
+            printf("%d\n",max1);
+        }
+        for ( int l=0; l<n; l++ ){
+            for (int j = 0; j < n; j++){
+            int sum2[100]={0};
+                for (int i = 0; i < n; i++){
+                sum2[l] += arr[i][j];
+                    if (sum2[l] > max2){
+                        max2=sum2[l];
+                    }
+                }
+            }
+            printf("%d\n",max2);
+        }
+        sum = max1+max2;
+        if ( sum > 5000){
+            players[0].realHP=players[0].baseHP*2;
+            if (players[0].realHP > 999){
+                players[0].realHP=999;
+            }
+        }else {
+            players[0].realHP=players[0].baseHP;
+        }
+
+    }
     //ground = 999
     if ( ground == 999){
         char s[20];
